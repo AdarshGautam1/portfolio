@@ -14,29 +14,29 @@ export const PROFILE = {
 };
 
 export const SKILLS = [
-  /* Core */
-  { name: 'JavaScript', category: 'core', level: 95, x: 50, y: 30 },
-  { name: 'TypeScript', category: 'core', level: 85, x: 60, y: 25 },
-  { name: 'HTML/CSS', category: 'core', level: 95, x: 40, y: 35 },
+  /* Core — Top Center */
+  { name: 'JavaScript', category: 'core', level: 95, x: 48, y: 32, labelY: -3.8 },
+  { name: 'TypeScript', category: 'core', level: 85, x: 68, y: 20, labelY: -3.8 },
+  { name: 'HTML/CSS', category: 'core', level: 95, x: 26, y: 24, labelY: -3.8 },
 
-  /* Frontend */
-  { name: 'React', category: 'frontend', level: 90, x: 70, y: 40 },
-  { name: 'Next.js', category: 'frontend', level: 80, x: 75, y: 50 },
-  { name: 'Three.js', category: 'frontend', level: 70, x: 80, y: 35 },
-  { name: 'GSAP', category: 'frontend', level: 85, x: 65, y: 55 },
+  /* Frontend — Right & Upper Right */
+  { name: 'React', category: 'frontend', level: 90, x: 74, y: 40, labelY: -3.8 },
+  { name: 'Three.js', category: 'frontend', level: 70, x: 88, y: 28, labelY: -3.8 },
+  { name: 'Next.js', category: 'frontend', level: 80, x: 86, y: 56, labelY: 5.2 },
+  { name: 'GSAP', category: 'frontend', level: 85, x: 68, y: 64, labelY: 5.2 },
 
-  /* Backend */
-  { name: 'Node.js', category: 'backend', level: 80, x: 30, y: 50 },
-  { name: 'Python', category: 'backend', level: 75, x: 25, y: 60 },
-  { name: 'MongoDB', category: 'backend', level: 75, x: 35, y: 65 },
+  /* Game Dev — Far Left */
+  { name: 'Unity', category: 'gamedev', level: 70, x: 12, y: 42, labelY: -3.8 },
+  { name: 'C#', category: 'gamedev', level: 70, x: 10, y: 60, labelY: 5.2 },
 
-  /* Game Dev */
-  { name: 'Unity', category: 'gamedev', level: 70, x: 20, y: 40 },
-  { name: 'C#', category: 'gamedev', level: 70, x: 15, y: 50 },
+  /* Backend — Mid & Lower Left */
+  { name: 'Node.js', category: 'backend', level: 80, x: 32, y: 48, labelY: -3.8 },
+  { name: 'Python', category: 'backend', level: 75, x: 22, y: 74, labelY: 5.2 },
+  { name: 'MongoDB', category: 'backend', level: 75, x: 38, y: 84, labelY: 5.2 },
 
-  /* Tools */
-  { name: 'Git', category: 'tools', level: 90, x: 55, y: 70 },
-  { name: 'Figma', category: 'tools', level: 75, x: 45, y: 75 },
+  /* Tools — Lower Center */
+  { name: 'Figma', category: 'tools', level: 75, x: 46, y: 68, labelY: -3.8 },
+  { name: 'Git', category: 'tools', level: 90, x: 58, y: 82, labelY: 5.2 },
 ];
 
 export const SKILL_CONNECTIONS = [
@@ -44,15 +44,20 @@ export const SKILL_CONNECTIONS = [
   ['JavaScript', 'React'],
   ['JavaScript', 'Node.js'],
   ['JavaScript', 'Three.js'],
+  ['JavaScript', 'Git'],
+  ['HTML/CSS', 'JavaScript'],
+  ['HTML/CSS', 'React'],
+  ['HTML/CSS', 'Figma'],
   ['React', 'Next.js'],
   ['React', 'GSAP'],
   ['TypeScript', 'React'],
-  ['HTML/CSS', 'JavaScript'],
-  ['HTML/CSS', 'React'],
+  ['Three.js', 'GSAP'],
   ['Node.js', 'MongoDB'],
   ['Node.js', 'Python'],
+  ['Node.js', 'Unity'],
   ['Unity', 'C#'],
-  ['Three.js', 'GSAP'],
+  ['Figma', 'Git'],
+  ['Git', 'GSAP'],
 ];
 
 export const PROJECTS = [
