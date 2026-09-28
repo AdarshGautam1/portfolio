@@ -55,9 +55,11 @@ function ProjectCard({ project, index }) {
   };
 
   /* generate procedural gradient for project placeholder */
-  const hue = 15 + index * 8;
   const gradientStyle = {
-    background: `linear-gradient(135deg, hsl(${hue}, 60%, 12%) 0%, hsl(${hue + 10}, 70%, 8%) 50%, hsl(${hue}, 50%, 5%) 100%)`,
+    background: project.accent
+      ? `radial-gradient(ellipse at top left, ${project.accent}44 0%, #101014 70%)`
+      : `linear-gradient(135deg, hsl(${15 + index * 12}, 60%, 12%) 0%, #0c0c10 100%)`,
+    borderColor: project.accent ? `${project.accent}44` : 'var(--edge)',
   };
 
   return (
@@ -69,7 +71,7 @@ function ProjectCard({ project, index }) {
       <span className="project-card__bg-num">{String(index + 1).padStart(2, '0')}</span>
 
       <div className="project-card__inner">
-        {/* Image */}
+        {/* Image / Graphic Visualizer */}
         <div
           className="project-card__image-wrap"
           ref={imageRef}
@@ -77,13 +79,27 @@ function ProjectCard({ project, index }) {
         >
           <div className="project-card__image" style={gradientStyle}>
             <div className="project-card__image-overlay">
+              {project.subtitle && (
+                <span
+                  className="project-card__image-badge"
+                  style={{ color: project.accent || 'var(--ember)' }}
+                >
+                  {project.subtitle}
+                </span>
+              )}
               <span className="project-card__image-label">{project.title}</span>
               <div className="project-card__image-grid">
                 {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={i} className="project-card__image-cell" style={{
-                    background: `rgba(232, 101, 43, ${0.03 + Math.random() * 0.08})`,
-                    animationDelay: `${i * 0.2}s`,
-                  }} />
+                  <div
+                    key={i}
+                    className="project-card__image-cell"
+                    style={{
+                      background: project.accent
+                        ? `${project.accent}${['1a', '2c', '14', '35', '20', '28'][i]}`
+                        : `rgba(232, 101, 43, ${0.04 + ((i * 13) % 5) * 0.02})`,
+                      animationDelay: `${i * 0.2}s`,
+                    }}
+                  />
                 ))}
               </div>
             </div>
@@ -95,7 +111,14 @@ function ProjectCard({ project, index }) {
 
         {/* Info */}
         <div className="project-card__info">
-          <span className="project-card__year">{project.year}</span>
+          <div className="project-card__meta">
+            <span className="project-card__year">{project.year}</span>
+            {project.liveUrl ? (
+              <span className="project-card__status project-card__status--live">● Live</span>
+            ) : (
+              <span className="project-card__status project-card__status--offline">○ Repository</span>
+            )}
+          </div>
           <h3 className="project-card__title">{project.title}</h3>
           <p className="project-card__desc">{project.description}</p>
 
@@ -106,12 +129,35 @@ function ProjectCard({ project, index }) {
           </div>
 
           <div className="project-card__actions">
-            <a href={project.liveUrl} className="glow-btn" data-magnetic>
-              <span>↗ Live</span>
-            </a>
-            <a href={project.codeUrl} className="glow-btn glow-btn--ghost" data-magnetic>
-              <span>{'</>'} Code</span>
-            </a>
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glow-btn"
+                data-magnetic
+              >
+                <span>↗ Live</span>
+              </a>
+            ) : (
+              <span
+                className="glow-btn glow-btn--disabled"
+                title="Not deployed"
+              >
+                <span>↗ Live</span>
+              </span>
+            )}
+            {project.codeUrl && (
+              <a
+                href={project.codeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glow-btn glow-btn--ghost"
+                data-magnetic
+              >
+                <span>{'</>'} Code</span>
+              </a>
+            )}
           </div>
         </div>
       </div>

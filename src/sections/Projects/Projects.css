@@ -85,28 +85,45 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.project-card__image-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.9;
+  background: rgba(8, 8, 10, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
 }
 
 .project-card__image-label {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 700;
   color: var(--bone);
-  opacity: 0.3;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .project-card__image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  width: 60%;
-  max-width: 200px;
+  gap: 6px;
+  width: 50%;
+  max-width: 160px;
 }
 
 .project-card__image-cell {
   aspect-ratio: 1;
-  border: 1px solid var(--edge);
+  border: 1px solid var(--edge-light);
+  border-radius: 2px;
   animation: cellPulse 3s ease-in-out infinite;
 }
 
@@ -144,6 +161,12 @@
   gap: var(--space-md);
 }
 
+.project-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
 .project-card__year {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -151,15 +174,38 @@
   color: var(--ember-dim);
 }
 
+.project-card__status {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+.project-card__status--live {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.project-card__status--offline {
+  color: var(--ash);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--edge);
+}
+
 .project-card__title {
   font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 700;
   margin-bottom: var(--space-xs);
+  color: var(--bone);
 }
 
 .project-card__desc {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.7;
-  color: var(--ash);
+  color: var(--bone-dim);
 }
 
 .project-card__tech {
@@ -176,13 +222,23 @@
 }
 
 .glow-btn--ghost {
-  border-color: var(--edge);
-  color: var(--ash);
+  border-color: var(--edge-light);
+  color: var(--bone-dim);
 }
 
 .glow-btn--ghost:hover {
   color: var(--void);
   border-color: var(--ember);
+}
+
+.glow-btn--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: var(--edge);
+  color: var(--ash);
+  pointer-events: none;
+  background: transparent;
+  user-select: none;
 }
 
 /* --- Connecting Thread --- */
