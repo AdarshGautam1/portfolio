@@ -1,0 +1,128 @@
+/* OrbitalNav Styles */
+
+.orbital-nav {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+
+.orbital-nav--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) translateX(20px);
+}
+
+.orbital-nav__progress {
+  width: 2px;
+  height: 120px;
+  background: var(--edge);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.orbital-nav__progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--ember);
+  transform-origin: top;
+  transform: scaleY(0);
+  border-radius: 1px;
+}
+
+.orbital-nav__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.orbital-nav__item {
+  position: relative;
+}
+
+.orbital-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: none;
+  border: none;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s var(--ease-out-quart);
+  position: relative;
+  white-space: nowrap;
+}
+
+.orbital-nav__link:hover {
+  color: var(--bone);
+}
+
+.orbital-nav__link--active {
+  color: var(--ember);
+}
+
+.orbital-nav__num {
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s var(--ease-out-expo);
+  font-size: 0.6rem;
+}
+
+.orbital-nav__link:hover .orbital-nav__num,
+.orbital-nav__link--active .orbital-nav__num {
+  opacity: 0.5;
+  transform: translateX(0);
+}
+
+.orbital-nav__label {
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s var(--ease-out-expo) 0.05s;
+}
+
+.orbital-nav__link:hover .orbital-nav__label,
+.orbital-nav__link--active .orbital-nav__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.orbital-nav__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ash-dark);
+  transition: all 0.3s var(--ease-out-quart);
+  flex-shrink: 0;
+}
+
+.orbital-nav__link:hover .orbital-nav__dot {
+  background: var(--bone-dim);
+  transform: scale(1.3);
+}
+
+.orbital-nav__link--active .orbital-nav__dot {
+  background: var(--ember);
+  box-shadow: 0 0 8px rgba(232, 101, 43, 0.5);
+  transform: scale(1.5);
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .orbital-nav {
+    display: none;
+  }
+}

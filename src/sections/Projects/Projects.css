@@ -1,0 +1,231 @@
+/* ============================================
+   Projects Section Styles
+   ============================================ */
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4xl);
+  position: relative;
+}
+
+/* --- Project Card --- */
+.project-card {
+  position: relative;
+  padding: var(--space-xl) 0;
+}
+
+.project-card__bg-num {
+  position: absolute;
+  top: -20px;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 700;
+  color: var(--surface);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.project-card--left .project-card__bg-num {
+  right: 0;
+}
+
+.project-card--right .project-card__bg-num {
+  left: 0;
+}
+
+.project-card__inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.project-card--right .project-card__inner {
+  grid-template-columns: 1fr 1.2fr;
+  direction: rtl;
+}
+
+.project-card--right .project-card__inner > * {
+  direction: ltr;
+}
+
+/* --- Image --- */
+.project-card__image-wrap {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-card__image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: perspective(800px) rotateY(2deg);
+  transition: transform 0.5s var(--ease-out-expo);
+}
+
+.project-card--right .project-card__image {
+  transform: perspective(800px) rotateY(-2deg);
+}
+
+.project-card__image-wrap:hover .project-card__image {
+  transform: perspective(800px) rotateY(0deg) scale(1.02);
+}
+
+.project-card__image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.project-card__image-label {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--bone);
+  opacity: 0.3;
+  letter-spacing: 0.1em;
+}
+
+.project-card__image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  width: 60%;
+  max-width: 200px;
+}
+
+.project-card__image-cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--edge);
+  animation: cellPulse 3s ease-in-out infinite;
+}
+
+@keyframes cellPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Corner brackets */
+.project-card__corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.project-card__corner--tl {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--ember-dim);
+  border-left: 2px solid var(--ember-dim);
+}
+
+.project-card__corner--br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--ember-dim);
+  border-right: 2px solid var(--ember-dim);
+}
+
+/* --- Info --- */
+.project-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.project-card__year {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--ember-dim);
+}
+
+.project-card__title {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  margin-bottom: var(--space-xs);
+}
+
+.project-card__desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--ash);
+}
+
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.project-card__actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.glow-btn--ghost {
+  border-color: var(--edge);
+  color: var(--ash);
+}
+
+.glow-btn--ghost:hover {
+  color: var(--void);
+  border-color: var(--ember);
+}
+
+/* --- Connecting Thread --- */
+.project-card__thread {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 4rem;
+  background: linear-gradient(to bottom, var(--ember-dim), transparent);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .project-card__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .project-card--right .project-card__inner {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .project-card__bg-num {
+    font-size: 4rem;
+  }
+
+  .project-card__image {
+    transform: none;
+  }
+
+  .project-card--right .project-card__image {
+    transform: none;
+  }
+
+  .project-card__actions {
+    flex-direction: column;
+  }
+
+  .glow-btn {
+    text-align: center;
+    justify-content: center;
+  }
+}

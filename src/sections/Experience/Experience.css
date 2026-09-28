@@ -1,0 +1,172 @@
+/* ============================================
+   Experience Section Styles
+   ============================================ */
+
+.experience__timeline {
+  position: relative;
+  padding: var(--space-3xl) 0;
+}
+
+/* --- SVG Path --- */
+.experience__svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Ember Dot --- */
+.experience__ember-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--ember);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--ember), 0 0 24px rgba(232, 101, 43, 0.3);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* --- Entries --- */
+.experience__entries {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4xl);
+  position: relative;
+  z-index: 1;
+}
+
+.experience__entry {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  width: 100%;
+}
+
+.experience__entry--left {
+  flex-direction: row;
+  padding-right: 55%;
+}
+
+.experience__entry--right {
+  flex-direction: row-reverse;
+  padding-left: 55%;
+}
+
+/* Node on timeline */
+.experience__node {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.experience__node-ring {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--ember-dim);
+  border-radius: 50%;
+  background: var(--void);
+  transition: all 0.3s ease;
+}
+
+.experience__entry:hover .experience__node-ring {
+  border-color: var(--ember);
+  box-shadow: 0 0 10px rgba(232, 101, 43, 0.3);
+  background: var(--ember);
+}
+
+/* Card */
+.experience__card {
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  padding: var(--space-xl);
+  position: relative;
+  transition: all 0.4s var(--ease-out-expo);
+  flex: 1;
+}
+
+.experience__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ember-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.experience__entry:hover .experience__card {
+  border-color: var(--ember-border);
+  background: var(--surface-hover);
+}
+
+.experience__entry:hover .experience__card::before {
+  opacity: 1;
+}
+
+.experience__year {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--ember);
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.experience__role {
+  font-size: 1.4rem;
+  margin-bottom: var(--space-xs);
+}
+
+.experience__company {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ash);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.experience__desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ash);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .experience__entry--left,
+  .experience__entry--right {
+    padding-right: 0;
+    padding-left: 2rem;
+    flex-direction: row;
+  }
+
+  .experience__svg {
+    left: 1rem;
+    transform: none;
+  }
+
+  .experience__ember-dot {
+    left: 1rem;
+    transform: none;
+  }
+
+  .experience__node {
+    position: absolute;
+    left: 0;
+  }
+}
