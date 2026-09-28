@@ -6,6 +6,7 @@ import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import SpaceBackground from './components/Background/SpaceBackground';
 import EmberCursor from './components/Cursor/EmberCursor';
 import OrbitalNav from './components/Navigation/OrbitalNav';
 import EntryLoader from './components/Loader/EntryLoader';
@@ -50,14 +51,16 @@ export default function App() {
       {/* Loading screen */}
       {!loaded && <EntryLoader onComplete={handleLoadComplete} />}
 
+      {/* Dynamic Deep Space & Nebula Background */}
+      <SpaceBackground />
+
       {/* Custom cursor */}
       <EmberCursor />
 
       {/* Navigation */}
       <OrbitalNav />
 
-      {/* Background layers */}
-      <div className="dot-grid" />
+      {/* Subtle Noise Texture */}
       <div className="noise-overlay" />
 
       {/* Sections */}
